@@ -414,11 +414,18 @@ def first_is_elsewhere_too(seq_seq):
     # -------------------------------------------------------------------------
     index = 0
     for j in range(len(seq_seq) - 1):
-        contain = seq_seq[j][index]
-        for k in range(len(seq_seq[j])):
-            if seq_seq[j + 1] == contain:
-                return True
-            index = index + 1
+        if len(seq_seq[0]) == 0:
+            return False
+        else:
+            contain = seq_seq[j][index]
+            for k in range(len(seq_seq[j])):
+                if len(seq_seq[j + 1][k]) == 0:
+                    index = index + 1
+                    break
+                elif seq_seq[j + 1][k] == contain:
+                    return True
+                else:
+                    index = index + 1
     return False
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
